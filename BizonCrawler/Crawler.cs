@@ -1,51 +1,46 @@
 using System;
-using System.Net;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 
 namespace BizonCrawler
 {
-    public class StringDownloader : IStringDownloader
-    {
-        public IObservable<string> Get(string url)
-        {
-            return Observable.FromAsync(
-            () => new WebClient().DownloadStringTaskAsync(url));
-        }
-    }
-
     public class Crawler
     {
+        private IStringDownloader _stringDownloader;
+        private IMongoRepository _mongoRepository;
+        private IPageParser _pageParser;
+
         private Subject<string> _urlsToCheck;
         private ConcurentHashSet<string> _checkedUrls;
-        private StringDownloader _stringDownloader;
+
+        public Crawler(IStringDownloader stringDownloader, IMongoRepository mongoRepository, IPageParser pageParser)
+        {
+            _stringDownloader = stringDownloader;
+            _mongoRepository = mongoRepository;
+            _pageParser = pageParser;
+        }
 
         public void Run(string startUrl)
         {
             _urlsToCheck = new Subject<string>();
             _checkedUrls = new ConcurentHashSet<string>();
-
-            var pageParser = new PageParser();
-            var mongoRepository = new MongoRepository();
-            _stringDownloader = new StringDownloader();
-
+            
             var pagesStream = from url in _urlsToCheck
                               from data in _stringDownloader.Get(url)
-                              select new Page(data, url, pageParser.GetPageTitle(data));
+                              select new Page(data, url, _pageParser.GetPageTitle(data));
 
-            pagesStream.Subscribe(mongoRepository);
+            pagesStream.Subscribe(_mongoRepository);
 
             var linkStream = from page in pagesStream
-                             from link in pageParser.GetPageLinks(page)
+                             from link in _pageParser.GetPageLinks(page)
                              where !IsLinkChecked(link)
                              select link;
 
             linkStream.Subscribe(_urlsToCheck);
+            
 
             AddUrlToCrawl(startUrl);
         }
-
-
 
         private bool IsLinkChecked(string url)
         {

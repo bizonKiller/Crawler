@@ -2,3 +2,5 @@ packages
 bin
 /BizonCrawler/obj
 /*.suo
+/BizonCrawler.Tests/bin
+/BizonCrawler.Tests/obj

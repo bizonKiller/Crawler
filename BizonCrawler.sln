@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizonCrawler", "BizonCrawler\BizonCrawler.csproj", "{121D12CE-2A75-4BFE-A54B-956E238B6F42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizonCrawler.Tests", "BizonCrawler.Tests\BizonCrawler.Tests.csproj", "{7FD73B4A-4F96-42F3-AFDD-317B05FC9D0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{121D12CE-2A75-4BFE-A54B-956E238B6F42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{121D12CE-2A75-4BFE-A54B-956E238B6F42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{121D12CE-2A75-4BFE-A54B-956E238B6F42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FD73B4A-4F96-42F3-AFDD-317B05FC9D0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FD73B4A-4F96-42F3-AFDD-317B05FC9D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FD73B4A-4F96-42F3-AFDD-317B05FC9D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FD73B4A-4F96-42F3-AFDD-317B05FC9D0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

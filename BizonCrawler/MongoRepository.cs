@@ -3,7 +3,7 @@ using MongoDB.Driver;
 
 namespace BizonCrawler
 {
-    public class MongoRepository : IObserver<Page>
+    public class MongoRepository : IMongoRepository
     {
         private readonly IMongoCollection<Page> _collection;
 
@@ -21,6 +21,7 @@ namespace BizonCrawler
 
         public void OnError(Exception error)
         {
+            Console.Out.WriteLine("Error! " + error);
         }
 
         public void OnCompleted()

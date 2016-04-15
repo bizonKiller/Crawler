@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace BizonCrawler
 {
-    public class PageParser
+    public class PageParser : IPageParser
     {
         private static readonly Regex _linkParser = new Regex(@"<a\s*.*href=\""([^\""]+)\""", RegexOptions.Compiled | RegexOptions.IgnoreCase);
         private static readonly Regex _titleParser = new Regex(@"<title>\s*(.+?)\s*</title>", RegexOptions.Compiled | RegexOptions.IgnoreCase);
