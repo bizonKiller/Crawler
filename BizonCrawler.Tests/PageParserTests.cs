@@ -1,20 +1,25 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
+using Assert = NUnit.Framework.Assert;
 
 namespace BizonCrawler.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class PageParserTests
     {
-        [TestMethod]
-        public void TestMethod1()
+        private PageParser parser = new PageParser();
+
+        [Test]
+        public void GetPageTitle_For()
         {
             // Arange
-
+            
             // Act
-      //      var parser = new BizonCrawler.
+            var title = parser.GetPageTitle("<html><head><title>test</title></head><body>...");
 
             // Assert
+            Assert.That(title, Is.EqualTo("test"));
         }
     }
 }
