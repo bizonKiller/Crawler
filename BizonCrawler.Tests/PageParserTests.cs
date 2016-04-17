@@ -11,7 +11,7 @@ namespace BizonCrawler.Tests
         private PageParser parser = new PageParser();
 
         [Test]
-        public void GetPageTitle_For()
+        public void GetPageTitle_ForNormalPage_ReturnTitle()
         {
             // Arange
             
@@ -21,5 +21,20 @@ namespace BizonCrawler.Tests
             // Assert
             Assert.That(title, Is.EqualTo("test"));
         }
+
+
+        [Test]
+        public void GetPageTitle_ForWrongPage_ReturnEmpty()
+        {
+            // Arange
+
+            // Act
+            var title = parser.GetPageTitle("asdfasdfkasdfkjhasdkfha...");
+
+            // Assert
+            Assert.That(title, Is.Empty);
+        }
+
+        // TODO: more test especialy for page links
     }
 }

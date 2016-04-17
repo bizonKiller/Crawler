@@ -6,9 +6,9 @@ namespace BizonCrawler
 {
     public class Crawler
     {
-        private IStringDownloader _stringDownloader;
-        private IMongoRepository _mongoRepository;
-        private IPageParser _pageParser;
+        private readonly IStringDownloader _stringDownloader;
+        private readonly IMongoRepository _mongoRepository;
+        private readonly IPageParser _pageParser;
 
         private Subject<string> _urlsToCheck;
         private ConcurentHashSet<string> _checkedUrls;
@@ -19,12 +19,12 @@ namespace BizonCrawler
             _mongoRepository = mongoRepository;
             _pageParser = pageParser;
         }
-
+ 
         public void Run(string startUrl)
         {
             _urlsToCheck = new Subject<string>();
             _checkedUrls = new ConcurentHashSet<string>();
-            
+
             var pagesStream = from url in _urlsToCheck
                               from data in _stringDownloader.Get(url)
                               select new Page(data, url, _pageParser.GetPageTitle(data));
@@ -37,7 +37,6 @@ namespace BizonCrawler
                              select link;
 
             linkStream.Subscribe(_urlsToCheck);
-            
 
             AddUrlToCrawl(startUrl);
         }

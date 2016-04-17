@@ -73,17 +73,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConcurentHashSet.cs" />
+    <Compile Include="Classes\ConcurentHashSet.cs" />
     <Compile Include="Crawler.cs" />
     <Compile Include="Interfaces\IMongoRepository.cs" />
     <Compile Include="Interfaces\IStringDownloader.cs" />
     <Compile Include="Interfaces\IPageParser.cs" />
-    <Compile Include="MongoRepository.cs" />
-    <Compile Include="Page.cs" />
-    <Compile Include="PageParser.cs" />
+    <Compile Include="Classes\MongoRepository.cs" />
+    <Compile Include="Classes\Page.cs" />
+    <Compile Include="Classes\PageParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StringDownloader.cs" />
+    <Compile Include="Classes\StringDownloader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
